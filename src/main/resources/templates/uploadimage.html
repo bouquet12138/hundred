@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>上传图片</title>
+	</head>
+	<body align="center">
+		<!-- 保存信息 -->
+		<h1 align="center">百岁堂上传图片</h1><br/><br/>
+		<form  action="/upload_img" method="post" enctype="multipart/form-data">
+		<table align="center">
+
+			<tr>
+				<td>图片文件:</td>
+				<td align="center"><input type="file" name="image_url"/></td>
+			</tr>
+			<tr>
+				<td>图片类型:</td>
+				<td><select name="image_type"><option value="头像" >头像</option><option value="展示图">展示图</option></select></td>
+			</tr>
+			<tr>
+				<td>图片描述:</td>
+				<td><input type="text" name = "image_describe" id="image_describe"></td>
+				<td><input type="submit" value="上传" ></td>
+
+			</tr>
+
+
+
+		</table>
+
+
+
+	</form>
+ 
+ 
+	</body>
+</html>
+	

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>百岁堂APP更新</title>
+
+
+    <link rel="stylesheet" href="../static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../static/layuiadmin/style/admin.css" media="all">
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<h1 align="center"> 百岁堂APP更新</h1><br/><br/>
+<!-- 保存信息 -->
+
+<form action="upload_app" method="post" enctype="multipart/form-data">
+    <table align="center">
+
+        <tr>
+            <td>图标文件：</td>
+            <td><input type="file" name="app_icon"/></td>
+        </tr>
+        <tr>
+            <td>安装包：</td>
+            <td><input type="file" name="app_url"/></td>
+
+
+        </tr>
+
+        <tr>
+            <td>更新描述：</td>
+            <td><input type="text" name="app_describe" id="version_code"></td>
+
+
+        </tr>
+
+        <tr>
+            <td>更新方式</td>
+            <td><select name="update_status">
+                <option value="1">版本更新</option>
+                <option value="0">不更新</option>
+                <option value="2">强制更新</option>
+            </select></td>
+
+
+        </tr>
+        <tr>
+            <td align="center"></td>
+            <td align="center"><input type="submit" value="上传"></td>
+            <td align="center"></td>
+        </tr>
+
+    </table>
+
+
+</form>
+
+</body>
+</html>
