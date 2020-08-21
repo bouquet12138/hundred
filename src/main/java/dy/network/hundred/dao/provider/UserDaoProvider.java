@@ -22,7 +22,7 @@ public class UserDaoProvider {
                     WHERE("phone_num LIKE CONCAT('%',#{phone_num},'%')");
 
             }
-        } + "  ORDER BY user_id  LIMIT " + (pageBean.getPage() * pageBean.getLimit()) + "," + pageBean.getLimit();
+        } + "  ORDER BY user_id  LIMIT " + ((pageBean.getPage() - 1) * pageBean.getLimit()) + "," + pageBean.getLimit();
 
         log.info(sql);
 
