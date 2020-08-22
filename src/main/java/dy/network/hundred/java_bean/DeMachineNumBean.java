@@ -18,4 +18,13 @@ public class DeMachineNumBean {
         this.user_id = user_id;
         this.insert_time = insert_time;
     }
+
+    /**
+     * 次数添加
+     *
+     * @param num
+     */
+    public void addDeMachineNum(int num) {
+        demachine_num += num;
+    }
 }

@@ -34,7 +34,7 @@ public class AppServiceImpl
 
     public BaseBean<AppBean> findAppUpdateData() {
         BaseBean<AppBean> baseBean = new BaseBean();
-        AppBean appBeans = this.appDao.findAppUpdateData();
+        AppBean appBeans = appDao.findAppUpdateData();
         if (appBeans != null) {
             baseBean.setCode(SUCCESS);
             baseBean.setMsg("信息获取成功");
@@ -45,4 +45,6 @@ public class AppServiceImpl
         return baseBean;
     }
 }
+
+
 

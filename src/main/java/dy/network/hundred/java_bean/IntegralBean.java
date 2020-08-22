@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import dy.network.hundred.utils.DateUtil;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @NoArgsConstructor
 public class IntegralBean {
@@ -21,6 +22,7 @@ public class IntegralBean {
     private String transaction_time;
     private Integer user_id;
     private Integer target_user_id;
+    private UserBean targetUserBean;
 
 
     private String integral_type;

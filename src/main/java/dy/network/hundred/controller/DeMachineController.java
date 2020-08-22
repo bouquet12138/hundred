@@ -22,4 +22,23 @@ public class DeMachineController {
         return deMachineService.getDemachineNum(userBean.getUser_id());
     }
 
+    /**
+     * 次数充值
+     * @param userBean
+     * @return
+     */
+    @PostMapping({"/recharge_demachine_num"})
+    public BaseBean<Integer> rechargeDemachineNum(@RequestBody UserBean userBean) {
+
+        return deMachineService.rechargeDemachineNum(userBean);
+    }
+
+
+    @PostMapping({"/scan_start_machine"})
+    public BaseBean scanStartMachine(@RequestBody UserBean userBean) {
+
+        return deMachineService.scanStartMachine(userBean);
+    }
+
+
 }

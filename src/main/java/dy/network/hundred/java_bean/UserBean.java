@@ -58,6 +58,8 @@ public class UserBean {
 
     private String enable;
 
+    private String sn;
+
     public void setDefaultData() {
         sex = "男";
         register_time = DateUtil.getDate();

@@ -76,6 +76,7 @@ public class UserController {
     }
 
 
+
     @PostMapping({"/get_user_info_with_place"})
     public BaseBean<List<UserBean>> findUserDataByAddress(@RequestBody UserBean userBean) {
         return userService.findUserDataByAddress(userBean);
@@ -99,14 +100,6 @@ public class UserController {
         return userService.openZoneThree(userBean.getUser_id());
     }
 
-    @GetMapping("/getUserList")
-    public BaseBean<List<UserBean>> getUserList(Integer page,  Integer limit,  String name, String phone_num) {
-
-        PageBean pageBean = new PageBean(page, limit, name, phone_num);
-
-        return userService.getUserList(pageBean);
-    }
-
     @PostMapping("/enable_user")
     public BaseBean enableUser(@RequestBody UserBean userBean) {
         return userService.enableUser(userBean);
@@ -115,6 +108,19 @@ public class UserController {
     @PostMapping("/grade_user")
     public BaseBean gradeUser(@RequestBody UserBean userBean) {
         return userService.gradeUser(userBean);
+    }
+
+    @GetMapping("/getUserList")
+    public BaseBean<List<UserBean>> getUserList(Integer page, Integer limit, String name, String phone_num) {
+
+        PageBean pageBean = new PageBean(page, limit, name, phone_num);
+
+        return userService.getUserList(pageBean);
+    }
+
+    @GetMapping({"/get_user_info_with_phone_get"})
+    public BaseBean<UserBean> findUserDataByUserPhoneNumGet(String phone_num) {
+        return userService.findUserDataByUserPhoneNum(phone_num);
     }
 
 }
