@@ -2,7 +2,7 @@ package dy.network.hundred.service;
 
 
 
-import dy.network.hundred.java_bean.AppBean;
+import dy.network.hundred.java_bean.db_bean.AppBean;
 import dy.network.hundred.java_bean.BaseBean;
 
 public interface AppService {

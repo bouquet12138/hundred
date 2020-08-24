@@ -2,8 +2,7 @@ package dy.network.hundred.utils;
 
 
 import dy.network.hundred.dao.ConfigDao;
-import dy.network.hundred.java_bean.ConfigBean;
-import dy.network.hundred.utils.ConfigUtil;
+import dy.network.hundred.java_bean.db_bean.ConfigBean;
 
 
 public class ConfigUtil {

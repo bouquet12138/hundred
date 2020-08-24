@@ -1,6 +1,6 @@
 package dy.network.hundred.controller;
 
-import dy.network.hundred.java_bean.OptionBean;
+import dy.network.hundred.java_bean.db_bean.OptionBean;
 import dy.network.hundred.service.OptionService;
 import dy.network.hundred.java_bean.BaseBean;
 import java.util.List;

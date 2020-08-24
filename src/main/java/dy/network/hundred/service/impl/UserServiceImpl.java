@@ -4,6 +4,9 @@ import dy.network.hundred.dao.DeMachineNumDao;
 import dy.network.hundred.dao.IntegralDao;
 import dy.network.hundred.dao.UserDao;
 import dy.network.hundred.java_bean.*;
+import dy.network.hundred.java_bean.db_bean.DeMachineNumBean;
+import dy.network.hundred.java_bean.db_bean.IntegralBean;
+import dy.network.hundred.java_bean.db_bean.UserBean;
 import dy.network.hundred.service.UserService;
 import dy.network.hundred.utils.DateUtil;
 import dy.network.hundred.utils.IntegerUtil;
@@ -74,6 +77,14 @@ public class UserServiceImpl
         }
 
         UserBean recommendBean = userDao.findUserPartByPhone_num(userBean.getRecommend_user_phone());
+        recommendBean.setPay_password(MD5Utils.generateMD5(userBean.getPay_password()));
+        Integer isTrue = userDao.payPasswordIsTrue(recommendBean);
+
+        if (isTrue <= 0) {
+            baseBean.setMsg("支付密码错误");
+            return baseBean;
+        }
+
         if (recommendBean == null) {
             baseBean.setMsg("推荐人不存在");
             return baseBean;
@@ -88,7 +99,6 @@ public class UserServiceImpl
             baseBean.setMsg("积分不足");
             return baseBean;
         }
-
 
         UserBean vertexBean = userDao.findUserPartByPhone_num(userBean.getVertex_user_phone());
         if (vertexBean == null) {

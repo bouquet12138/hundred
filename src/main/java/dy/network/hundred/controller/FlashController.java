@@ -1,15 +1,13 @@
 package dy.network.hundred.controller;
 
 
-import dy.network.hundred.java_bean.FlashBean;
+import dy.network.hundred.java_bean.db_bean.FlashBean;
 import dy.network.hundred.service.FlashService;
 import dy.network.hundred.java_bean.BaseBean;
 
 import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

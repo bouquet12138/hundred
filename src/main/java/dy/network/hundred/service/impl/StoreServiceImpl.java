@@ -2,8 +2,8 @@ package dy.network.hundred.service.impl;
 
 import dy.network.hundred.dao.ImageDao;
 import dy.network.hundred.dao.StoreDao;
-import dy.network.hundred.java_bean.ImageBean;
-import dy.network.hundred.java_bean.StoreBean;
+import dy.network.hundred.java_bean.db_bean.ImageBean;
+import dy.network.hundred.java_bean.db_bean.StoreBean;
 import dy.network.hundred.service.StoreService;
 import dy.network.hundred.java_bean.BaseBean;
 import dy.network.hundred.utils.DataAnalysis;

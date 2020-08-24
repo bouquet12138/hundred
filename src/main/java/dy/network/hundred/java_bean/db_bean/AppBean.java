@@ -1,4 +1,4 @@
-package dy.network.hundred.java_bean;
+package dy.network.hundred.java_bean.db_bean;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

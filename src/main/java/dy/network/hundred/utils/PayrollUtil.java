@@ -2,8 +2,8 @@ package dy.network.hundred.utils;
 
 import dy.network.hundred.dao.PayrollDao;
 import dy.network.hundred.dao.UserDao;
-import dy.network.hundred.java_bean.PayrollBean;
-import dy.network.hundred.java_bean.UserBean;
+import dy.network.hundred.java_bean.db_bean.PayrollBean;
+import dy.network.hundred.java_bean.db_bean.UserBean;
 
 public class PayrollUtil {
 

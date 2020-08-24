@@ -1,6 +1,6 @@
 package dy.network.hundred.controller;
 
-import dy.network.hundred.java_bean.AdminBean;
+import dy.network.hundred.java_bean.db_bean.AdminBean;
 import dy.network.hundred.java_bean.BaseBean;
 
 import dy.network.hundred.service.AdminService;

@@ -3,9 +3,9 @@ package dy.network.hundred.controller;
 
 
 import dy.network.hundred.java_bean.DeliverNumBean;
-import dy.network.hundred.java_bean.GoodBean;
-import dy.network.hundred.java_bean.OrderRecordBean;
-import dy.network.hundred.java_bean.UserBean;
+import dy.network.hundred.java_bean.db_bean.GoodBean;
+import dy.network.hundred.java_bean.db_bean.OrderRecordBean;
+import dy.network.hundred.java_bean.db_bean.UserBean;
 import dy.network.hundred.service.GoodService;
 import dy.network.hundred.java_bean.BaseBean;
 import java.util.List;

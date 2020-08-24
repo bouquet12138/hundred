@@ -5,6 +5,7 @@ import dy.network.hundred.dao.ImageDao;
 import dy.network.hundred.dao.PayrollDao;
 import dy.network.hundred.dao.UserDao;
 import dy.network.hundred.java_bean.*;
+import dy.network.hundred.java_bean.db_bean.*;
 import dy.network.hundred.service.GoodService;
 import dy.network.hundred.utils.*;
 import org.slf4j.Logger;

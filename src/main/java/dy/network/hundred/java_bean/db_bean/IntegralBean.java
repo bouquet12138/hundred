@@ -1,4 +1,4 @@
-package dy.network.hundred.java_bean;
+package dy.network.hundred.java_bean.db_bean;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import dy.network.hundred.utils.DateUtil;
@@ -12,6 +12,8 @@ public class IntegralBean {
     public static final String BUY_SET_MEAL = "购买套餐";
     public static final String TRANSFERS_BETWEEN = "互转";
     public static final String RECHARGE = "充值";
+
+    public static final String CONVERSION = "转换";
 
     public static final String OTHER = "其他";
 

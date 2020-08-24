@@ -2,7 +2,7 @@ package dy.network.hundred.controller;
 
 
 import dy.network.hundred.java_bean.PageBean;
-import dy.network.hundred.java_bean.UserBean;
+import dy.network.hundred.java_bean.db_bean.UserBean;
 import dy.network.hundred.service.UserService;
 import dy.network.hundred.java_bean.BaseBean;
 

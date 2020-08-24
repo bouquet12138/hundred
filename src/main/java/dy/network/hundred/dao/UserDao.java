@@ -1,10 +1,9 @@
 package dy.network.hundred.dao;
 
 
-import dy.network.hundred.dao.provider.StoreDaoProvider;
 import dy.network.hundred.dao.provider.UserDaoProvider;
 import dy.network.hundred.java_bean.PageBean;
-import dy.network.hundred.java_bean.UserBean;
+import dy.network.hundred.java_bean.db_bean.UserBean;
 
 import java.util.List;
 import javax.websocket.server.PathParam;
@@ -53,6 +52,9 @@ public interface UserDao {
 
     @Update({"update user_tab set pay_password = #{new_pay_password} where user_id = #{user_id}"})
     Integer updateUserPayPassword(UserBean paramUserBean);
+
+    @Select({"select * from user_tab where user_id = #{user_id}"})
+    UserBean findUserDataByUserIdNoImage(@PathParam("user_id") Integer paramInteger);
 
     @Select({"select * from user_tab where user_id = #{user_id}"})
     @Results(id = "userdata", value = {@Result(property = "head_img", column = "head_img_id", one = @One(select = "dy.network.hundred.dao.ImageDao.findImageDDataByUserId", fetchType = FetchType.EAGER))})
@@ -152,4 +154,10 @@ public interface UserDao {
 
     @Update({"update user_tab set grade = #{grade} where user_id = #{user_id}"})
     int gradeUser(UserBean userBean);
+
+    @Select({"select * from user_tab where  phone_num LIKE CONCAT('%',#{phone_num},'%')"})
+    List<UserBean> findUserPhoneDim(String phone_num);
+
+    @Select({"select * from user_tab where  name LIKE CONCAT('%',#{name},'%')"})
+    List<UserBean> findUserListByNameDim(String name);
 }

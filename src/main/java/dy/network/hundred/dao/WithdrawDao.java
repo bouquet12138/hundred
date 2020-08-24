@@ -1,6 +1,6 @@
 package dy.network.hundred.dao;
 
-import dy.network.hundred.java_bean.WithdrawBean;
+import dy.network.hundred.java_bean.db_bean.WithdrawBean;
 import java.util.List;
 import javax.websocket.server.PathParam;
 import org.apache.ibatis.annotations.Insert;

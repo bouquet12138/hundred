@@ -1,7 +1,7 @@
 package dy.network.hundred.dao;
 
 
-import dy.network.hundred.java_bean.FlashBean;
+import dy.network.hundred.java_bean.db_bean.FlashBean;
 
 import java.util.List;
 import javax.websocket.server.PathParam;

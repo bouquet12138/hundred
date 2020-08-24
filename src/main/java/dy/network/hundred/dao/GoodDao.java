@@ -3,8 +3,8 @@ package dy.network.hundred.dao;
 
 
 import dy.network.hundred.dao.provider.GoodDaoProvider;
-import dy.network.hundred.java_bean.GoodBean;
-import dy.network.hundred.java_bean.OrderRecordBean;
+import dy.network.hundred.java_bean.db_bean.GoodBean;
+import dy.network.hundred.java_bean.db_bean.OrderRecordBean;
 import java.util.List;
 import javax.websocket.server.PathParam;
 import org.apache.ibatis.annotations.Delete;

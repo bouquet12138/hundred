@@ -1,13 +1,17 @@
 package dy.network.hundred.controller;
 
-import dy.network.hundred.java_bean.BaseBean;
-import dy.network.hundred.java_bean.UserBean;
+import dy.network.hundred.java_bean.*;
+import dy.network.hundred.java_bean.db_bean.DeMachineNumBean;
+import dy.network.hundred.java_bean.db_bean.UserBean;
 import dy.network.hundred.service.DeMachineService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -38,6 +42,21 @@ public class DeMachineController {
     public BaseBean scanStartMachine(@RequestBody UserBean userBean) {
 
         return deMachineService.scanStartMachine(userBean);
+    }
+
+
+    @GetMapping({"/getDemachineNumList"})
+    public BaseBean<List<DeMachineNumBean>> getDemachineNumList(Integer page, Integer limit, String name, String phone_num) {
+
+        PageBean pageBean = new PageBean(page, limit, name, phone_num);
+
+        return deMachineService.getDemachineNumList(pageBean);
+    }
+
+
+    @PostMapping({"/modify_demachine_num"})
+    public BaseBean modifyDemachineNum(@RequestBody DeMachineNumBean deMachineNumBean) {
+        return deMachineService.modifyDemachineNum(deMachineNumBean);
     }
 
 

@@ -1,9 +1,8 @@
 package dy.network.hundred.service;
 
 
-import dy.network.hundred.java_bean.FlashBean;
+import dy.network.hundred.java_bean.db_bean.FlashBean;
 import dy.network.hundred.java_bean.BaseBean;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 

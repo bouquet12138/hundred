@@ -3,8 +3,8 @@ package dy.network.hundred.utils;
 
 import dy.network.hundred.dao.IntegralDao;
 import dy.network.hundred.dao.UserDao;
-import dy.network.hundred.java_bean.IntegralBean;
-import dy.network.hundred.java_bean.UserBean;
+import dy.network.hundred.java_bean.db_bean.IntegralBean;
+import dy.network.hundred.java_bean.db_bean.UserBean;
 
 public class IntegerUtil {
 

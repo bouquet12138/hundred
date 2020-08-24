@@ -1,7 +1,7 @@
 package dy.network.hundred.dao;
 
 
-import dy.network.hundred.java_bean.StoreBean;
+import dy.network.hundred.java_bean.db_bean.StoreBean;
 import dy.network.hundred.dao.provider.StoreDaoProvider;
 
 import java.util.List;

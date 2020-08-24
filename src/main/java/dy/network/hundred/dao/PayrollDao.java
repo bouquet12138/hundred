@@ -1,7 +1,7 @@
 package dy.network.hundred.dao;
 
-import dy.network.hundred.java_bean.PayrollBean;
-import dy.network.hundred.java_bean.UserBean;
+import dy.network.hundred.java_bean.db_bean.PayrollBean;
+import dy.network.hundred.java_bean.db_bean.UserBean;
 
 import java.util.List;
 import javax.websocket.server.PathParam;

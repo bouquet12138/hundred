@@ -1,7 +1,7 @@
 package dy.network.hundred.controller;
 
 
-import dy.network.hundred.java_bean.AppBean;
+import dy.network.hundred.java_bean.db_bean.AppBean;
 import dy.network.hundred.java_bean.App_Bean;
 import dy.network.hundred.service.AppService;
 import dy.network.hundred.utils.AppInfoUtil;

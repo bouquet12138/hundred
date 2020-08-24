@@ -1,7 +1,7 @@
 package dy.network.hundred.dao.provider;
 
-import dy.network.hundred.java_bean.GoodBean;
-import dy.network.hundred.java_bean.OrderRecordBean;
+import dy.network.hundred.java_bean.db_bean.GoodBean;
+import dy.network.hundred.java_bean.db_bean.OrderRecordBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

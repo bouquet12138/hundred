@@ -1,7 +1,7 @@
 package dy.network.hundred.service.impl;
 
 import dy.network.hundred.dao.ImageDao;
-import dy.network.hundred.java_bean.ImageBean;
+import dy.network.hundred.java_bean.db_bean.ImageBean;
 import dy.network.hundred.service.ImageService;
 import dy.network.hundred.java_bean.BaseBean;
 import org.springframework.beans.factory.annotation.Autowired;

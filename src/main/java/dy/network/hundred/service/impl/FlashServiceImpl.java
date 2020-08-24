@@ -1,8 +1,8 @@
 package dy.network.hundred.service.impl;
 
 import dy.network.hundred.dao.FlashDao;
-import dy.network.hundred.java_bean.FlashBean;
-import dy.network.hundred.java_bean.FlashContentBean;
+import dy.network.hundred.java_bean.db_bean.FlashBean;
+import dy.network.hundred.java_bean.db_bean.FlashContentBean;
 import dy.network.hundred.service.FlashContentService;
 import dy.network.hundred.service.FlashService;
 import dy.network.hundred.java_bean.BaseBean;

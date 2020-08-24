@@ -1,7 +1,7 @@
 package dy.network.hundred.controller;
 
 
-import dy.network.hundred.java_bean.IntegralBean;
+import dy.network.hundred.java_bean.db_bean.IntegralBean;
 import dy.network.hundred.service.IntegraService;
 import dy.network.hundred.java_bean.BaseBean;
 
@@ -46,4 +46,15 @@ public class IntegralController {
     public BaseBean<Long> integralToPayroll(@RequestBody IntegralBean integralBean) {
         return integralService.integralToPayroll(integralBean);
     }
+
+    /**
+     * 为用户充积分
+     * @param integralBean
+     * @return
+     */
+    @PostMapping({"/recharge_integral_for_user"})
+    public BaseBean rechargeIntegralForUser(@RequestBody IntegralBean integralBean) {
+        return integralService.rechargeIntegralForUser(integralBean);
+    }
+
 }

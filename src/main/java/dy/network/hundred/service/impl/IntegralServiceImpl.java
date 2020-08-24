@@ -1,19 +1,20 @@
 package dy.network.hundred.service.impl;
 
 
+import dy.network.hundred.dao.AdminDao;
 import dy.network.hundred.dao.IntegralDao;
 import dy.network.hundred.dao.PayrollDao;
 import dy.network.hundred.dao.UserDao;
-import dy.network.hundred.java_bean.IntegralBean;
-import dy.network.hundred.java_bean.PayrollBean;
-import dy.network.hundred.java_bean.UserBean;
+import dy.network.hundred.java_bean.*;
+import dy.network.hundred.java_bean.db_bean.AdminBean;
+import dy.network.hundred.java_bean.db_bean.IntegralBean;
+import dy.network.hundred.java_bean.db_bean.PayrollBean;
+import dy.network.hundred.java_bean.db_bean.UserBean;
 import dy.network.hundred.service.IntegraService;
-import dy.network.hundred.java_bean.BaseBean;
 import dy.network.hundred.utils.IntegerUtil;
 import dy.network.hundred.utils.MD5Utils;
 import dy.network.hundred.utils.PayrollUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -21,11 +22,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
+@Slf4j
 @Service("integralService")
 public class IntegralServiceImpl implements IntegraService {
-    private static final Logger log = LoggerFactory.getLogger(IntegralServiceImpl.class);
 
+    @Autowired
+    private AdminDao adminDao;
 
     @Autowired
     private IntegralDao integralDao;
@@ -152,7 +154,7 @@ public class IntegralServiceImpl implements IntegraService {
             return baseBean;
         }
 
-        IntegerUtil.addIntegerRecord(PayrollBean.CONVERSION, -amount, user.getUser_id(), null, integralBean
+        IntegerUtil.addIntegerRecord(IntegralBean.OTHER, -amount, user.getUser_id(), null, integralBean
                 .getTransaction_remark(), userDao, integralDao);
 
         PayrollUtil.addPayrollRecord(PayrollBean.CONVERSION, amount, user.getUser_id(), null, "", 0, integralBean
@@ -161,6 +163,28 @@ public class IntegralServiceImpl implements IntegraService {
 
         baseBean.setCode(BaseBean.SUCCESS);
         baseBean.setMsg("转换成功");
+
+        return baseBean;
+    }
+
+    @Override
+    public BaseBean rechargeIntegralForUser(IntegralBean integralBean) {
+        BaseBean baseBean = new BaseBean();
+        AdminBean adminBean = new AdminBean();
+        adminBean.setAdmin_pay_password(MD5Utils.generateMD5(integralBean.getPay_password()));
+
+        int count = adminDao.adminPayPass(adminBean);
+        if (count <= 0) {
+            baseBean.setMsg("支付密码错误");
+            return baseBean;
+        }
+
+        IntegerUtil.addIntegerRecord(IntegralBean.CONVERSION, integralBean.getTransaction_amount(), integralBean.getUser_id(),
+                null, integralBean
+                .getTransaction_remark(), userDao, integralDao);
+
+        baseBean.setCode(BaseBean.SUCCESS);//充值成功
+        baseBean.setMsg("充值成功");
 
         return baseBean;
     }

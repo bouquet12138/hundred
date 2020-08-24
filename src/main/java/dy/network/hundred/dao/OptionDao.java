@@ -2,7 +2,7 @@ package dy.network.hundred.dao;
 
 
 
-import dy.network.hundred.java_bean.OptionBean;
+import dy.network.hundred.java_bean.db_bean.OptionBean;
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;

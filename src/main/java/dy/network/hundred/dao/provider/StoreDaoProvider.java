@@ -1,7 +1,7 @@
 package dy.network.hundred.dao.provider;
 
 
-import dy.network.hundred.java_bean.StoreBean;
+import dy.network.hundred.java_bean.db_bean.StoreBean;
 
 import dy.network.hundred.utils.TextUtil;
 import lombok.extern.slf4j.Slf4j;

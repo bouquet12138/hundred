@@ -1,7 +1,7 @@
 package dy.network.hundred.controller;
 
 import dy.network.hundred.contract.FileContract;
-import dy.network.hundred.java_bean.ImageBean;
+import dy.network.hundred.java_bean.db_bean.ImageBean;
 import dy.network.hundred.java_bean.Image_Bean;
 import dy.network.hundred.service.ImageService;
 import dy.network.hundred.java_bean.BaseBean;

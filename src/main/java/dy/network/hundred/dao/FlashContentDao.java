@@ -2,7 +2,7 @@ package dy.network.hundred.dao;
 
 
 
-import dy.network.hundred.java_bean.FlashContentBean;
+import dy.network.hundred.java_bean.db_bean.FlashContentBean;
 import javax.websocket.server.PathParam;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.One;

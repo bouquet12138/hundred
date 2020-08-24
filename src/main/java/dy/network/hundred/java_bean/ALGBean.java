@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class ALGBean {
 
+    private int alg_id;
     private int num_a;
     private int num_b;
 

@@ -1,7 +1,7 @@
 package dy.network.hundred.service.impl;
 
 import dy.network.hundred.dao.AppDao;
-import dy.network.hundred.java_bean.AppBean;
+import dy.network.hundred.java_bean.db_bean.AppBean;
 import dy.network.hundred.service.AppService;
 import dy.network.hundred.java_bean.BaseBean;
 import org.springframework.beans.factory.annotation.Autowired;

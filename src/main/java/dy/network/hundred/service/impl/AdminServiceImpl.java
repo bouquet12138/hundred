@@ -1,7 +1,7 @@
 package dy.network.hundred.service.impl;
 
 import dy.network.hundred.dao.AdminDao;
-import dy.network.hundred.java_bean.AdminBean;
+import dy.network.hundred.java_bean.db_bean.AdminBean;
 import dy.network.hundred.java_bean.BaseBean;
 import dy.network.hundred.service.AdminService;
 import dy.network.hundred.utils.MD5Utils;

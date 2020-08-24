@@ -1,7 +1,7 @@
 package dy.network.hundred.service.impl;
 
 import dy.network.hundred.dao.OptionDao;
-import dy.network.hundred.java_bean.OptionBean;
+import dy.network.hundred.java_bean.db_bean.OptionBean;
 import dy.network.hundred.service.OptionService;
 import dy.network.hundred.java_bean.BaseBean;
 import dy.network.hundred.utils.DateUtil;

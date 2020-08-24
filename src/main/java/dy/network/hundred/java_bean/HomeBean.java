@@ -1,6 +1,10 @@
 package dy.network.hundred.java_bean;
 
+import dy.network.hundred.java_bean.chart_bean.LineChartBean;
+import dy.network.hundred.java_bean.chart_bean.PieChartBean;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class HomeBean {
@@ -11,5 +15,6 @@ public class HomeBean {
     private String dailyActiveUserTotal = "0";
     private String orderTotal;
 
-    private String echartsData2;
+    private List<LineChartBean> echartsData;
+    private List<PieChartBean> echartsData2;
 }

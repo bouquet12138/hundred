@@ -1,12 +1,8 @@
 package dy.network.hundred.service.impl;
 
-import com.alibaba.fastjson.JSONObject;
-import com.google.gson.JsonObject;
-import dy.network.hundred.dao.ConfigDao;
-import dy.network.hundred.dao.DeMachineNumDao;
-import dy.network.hundred.dao.IntegralDao;
-import dy.network.hundred.dao.UserDao;
+import dy.network.hundred.dao.*;
 import dy.network.hundred.java_bean.*;
+import dy.network.hundred.java_bean.db_bean.*;
 import dy.network.hundred.service.DeMachineService;
 import dy.network.hundred.utils.*;
 import lombok.extern.slf4j.Slf4j;
@@ -15,8 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 @Slf4j
 @Service("deMachineService")
@@ -33,6 +31,9 @@ public class DeMachineServiceImpl implements DeMachineService {
 
     @Autowired
     private ConfigDao configDao;
+
+    @Autowired
+    private AdminDao adminDao;
 
     @Override
     public BaseBean<Integer> getDemachineNum(Integer user_id) {
@@ -151,6 +152,62 @@ public class DeMachineServiceImpl implements DeMachineService {
 
         baseBean.setMsg("启动成功");
         baseBean.setCode(BaseBean.SUCCESS);//成功
+
+        return baseBean;
+    }
+
+    @Override
+    public BaseBean<List<DeMachineNumBean>> getDemachineNumList(PageBean pageBean) {
+
+        BaseBean<List<DeMachineNumBean>> baseBean = new BaseBean<>();
+
+        List<UserBean> userBeans = new ArrayList<>();
+        if (!TextUtil.isEmpty(pageBean.getPhone_num()))
+            userBeans = userDao.findUserPhoneDim(pageBean.getPhone_num());
+
+        if (!TextUtil.isEmpty(pageBean.getName()))
+            userBeans = userDao.findUserListByNameDim(pageBean.getName());
+
+        if (!TextUtil.isEmpty(pageBean.getPhone_num()) || !TextUtil.isEmpty(pageBean.getName())) {
+            if (CollectionUtils.isEmpty(userBeans)) {
+                baseBean.setCode(BaseBean.SUCCESS);
+                baseBean.setMsg("没有数据");
+                return baseBean;
+            }
+        }
+
+        List<Integer> userIds = new ArrayList<>();
+        for (UserBean userBean : userBeans)
+            userIds.add(userBean.getUser_id());
+
+        pageBean.setUserIds(userIds);
+
+        List<DeMachineNumBean> data = deMachineNumDao.getDemachineNumList(pageBean);
+
+        baseBean.setCode(BaseBean.SUCCESS);
+        baseBean.setMsg("获取成功");
+        baseBean.setData(data);
+
+        return baseBean;
+    }
+
+    @Override
+    public BaseBean modifyDemachineNum(DeMachineNumBean deMachineNumBean) {
+
+        BaseBean baseBean = new BaseBean();
+        AdminBean adminBean = new AdminBean();
+        adminBean.setAdmin_pay_password(MD5Utils.generateMD5(deMachineNumBean.getPay_password()));
+
+        int count = adminDao.adminPayPass(adminBean);
+        if (count <= 0) {
+            baseBean.setMsg("支付密码错误");
+            return baseBean;
+        }
+
+        deMachineNumDao.modifyDemachineNum(deMachineNumBean);
+
+        baseBean.setCode(BaseBean.SUCCESS);
+        baseBean.setMsg("修改成功");
 
         return baseBean;
     }
