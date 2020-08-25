@@ -170,7 +170,7 @@ public class WithdrawServiceImpl implements WithdrawService {
     public BaseBean handleWithdraw(WithdrawBean withdrawBean) {
 
         BaseBean baseBean = new BaseBean();
-        
+
         withdrawDao.handleWithdraw(withdrawBean);
 
         baseBean.setCode(BaseBean.SUCCESS);
