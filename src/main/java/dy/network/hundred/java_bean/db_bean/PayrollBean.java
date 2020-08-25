@@ -21,6 +21,8 @@ public class PayrollBean {
     private String transaction_time;
 
     private int user_id;
+    private UserBean userBean;
+
     private String type;
     private String transaction_remark;
     private String promote_income_type;

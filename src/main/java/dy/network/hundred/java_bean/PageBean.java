@@ -13,6 +13,8 @@ public class PageBean {
     private String name;
     private String phone_num;
 
+    private String integral_type;
+
     private List<Integer> userIds;//对应的用户id
 
     public PageBean(int page, int limit, String name, String phone_num) {

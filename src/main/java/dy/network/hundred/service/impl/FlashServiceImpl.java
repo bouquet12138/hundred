@@ -1,6 +1,7 @@
 package dy.network.hundred.service.impl;
 
 import dy.network.hundred.dao.FlashDao;
+import dy.network.hundred.java_bean.PageBean;
 import dy.network.hundred.java_bean.db_bean.FlashBean;
 import dy.network.hundred.java_bean.db_bean.FlashContentBean;
 import dy.network.hundred.service.FlashContentService;
@@ -124,6 +125,33 @@ public class FlashServiceImpl implements FlashService {
 
             baseBean.setMsg("增加失败");
         }
+        return baseBean;
+    }
+
+    @Override
+    public BaseBean deleteFlash(int flash_id) {
+
+        BaseBean baseBean = new BaseBean();
+
+        flashDao.deleteFlashContent(flash_id);
+        flashDao.deleteFlash(flash_id);
+
+        baseBean.setCode(BaseBean.SUCCESS);//成功
+        baseBean.setMsg("删除成功");
+
+        return baseBean;
+    }
+
+    @Override
+    public BaseBean<List<FlashBean>> getFlashList(PageBean pageBean) {
+
+        BaseBean<List<FlashBean>> baseBean = new BaseBean();
+        List<FlashBean> flashBeans = this.flashDao.getFlashList(pageBean);
+
+        baseBean.setCode(BaseBean.SUCCESS);
+        baseBean.setMsg("加载成功");
+        baseBean.setData(flashBeans);
+
         return baseBean;
     }
 }

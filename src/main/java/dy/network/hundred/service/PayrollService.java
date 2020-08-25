@@ -2,6 +2,7 @@ package dy.network.hundred.service;
 
 
 
+import dy.network.hundred.java_bean.PageBean;
 import dy.network.hundred.java_bean.db_bean.PayrollBean;
 import dy.network.hundred.java_bean.BaseBean;
 import java.util.List;
@@ -17,4 +18,6 @@ public interface PayrollService {
   BaseBean payrollToIntegral(PayrollBean paramPayrollBean);
   
   BaseBean sendPayroll();
+
+  BaseBean<List<PayrollBean>> getPayrollList(PageBean pageBean);
 }

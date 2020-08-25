@@ -1,6 +1,8 @@
 package dy.network.hundred.controller;
 
 
+import dy.network.hundred.java_bean.PageBean;
+import dy.network.hundred.java_bean.db_bean.DeMachineNumBean;
 import dy.network.hundred.java_bean.db_bean.IntegralBean;
 import dy.network.hundred.service.IntegraService;
 import dy.network.hundred.java_bean.BaseBean;
@@ -10,6 +12,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,6 +58,15 @@ public class IntegralController {
     @PostMapping({"/recharge_integral_for_user"})
     public BaseBean rechargeIntegralForUser(@RequestBody IntegralBean integralBean) {
         return integralService.rechargeIntegralForUser(integralBean);
+    }
+
+    @GetMapping({"/getIntegralList"})
+    public BaseBean<List<IntegralBean>> getIntegralList(Integer page, Integer limit, String name, String phone_num, String integral_type) {
+
+        PageBean pageBean = new PageBean(page, limit, name, phone_num);
+        pageBean.setIntegral_type(integral_type);
+
+        return integralService.getIntegralList(pageBean);
     }
 
 }

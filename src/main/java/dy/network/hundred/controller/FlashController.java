@@ -1,6 +1,7 @@
 package dy.network.hundred.controller;
 
 
+import dy.network.hundred.java_bean.PageBean;
 import dy.network.hundred.java_bean.db_bean.FlashBean;
 import dy.network.hundred.service.FlashService;
 import dy.network.hundred.java_bean.BaseBean;
@@ -9,6 +10,7 @@ import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,4 +52,19 @@ public class FlashController {
     public BaseBean addFlashReadingVolume(@RequestBody FlashBean flashBean) {
         return flashService.addFlashReadingVolume(flashBean.getFlash_id());
     }
+
+
+
+    @PostMapping({"/delete_flash"})
+    public BaseBean deleteFlash(@RequestBody FlashBean flashBean) {
+        return flashService.deleteFlash(flashBean.getFlash_id());
+    }
+
+
+    @GetMapping({"/getFlashList"})
+    public BaseBean<List<FlashBean>> getFlashList(Integer page, Integer limit) {
+        PageBean pageBean = new PageBean(page, limit, "", "");
+        return flashService.getFlashList(pageBean);
+    }
+
 }

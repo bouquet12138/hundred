@@ -161,26 +161,11 @@ public class DeMachineServiceImpl implements DeMachineService {
 
         BaseBean<List<DeMachineNumBean>> baseBean = new BaseBean<>();
 
-        List<UserBean> userBeans = new ArrayList<>();
-        if (!TextUtil.isEmpty(pageBean.getPhone_num()))
-            userBeans = userDao.findUserPhoneDim(pageBean.getPhone_num());
-
-        if (!TextUtil.isEmpty(pageBean.getName()))
-            userBeans = userDao.findUserListByNameDim(pageBean.getName());
-
-        if (!TextUtil.isEmpty(pageBean.getPhone_num()) || !TextUtil.isEmpty(pageBean.getName())) {
-            if (CollectionUtils.isEmpty(userBeans)) {
-                baseBean.setCode(BaseBean.SUCCESS);
-                baseBean.setMsg("没有数据");
-                return baseBean;
-            }
+        boolean result = PageUtil.setPageBean(pageBean, userDao);
+        if (!result) {
+            baseBean.setMsg("没有数据");
+            return baseBean;
         }
-
-        List<Integer> userIds = new ArrayList<>();
-        for (UserBean userBean : userBeans)
-            userIds.add(userBean.getUser_id());
-
-        pageBean.setUserIds(userIds);
 
         List<DeMachineNumBean> data = deMachineNumDao.getDemachineNumList(pageBean);
 

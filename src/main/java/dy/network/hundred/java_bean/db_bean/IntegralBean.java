@@ -23,6 +23,8 @@ public class IntegralBean {
     private long transaction_amount = 0L;
     private String transaction_time;
     private Integer user_id;
+    private UserBean userBean;
+
     private Integer target_user_id;
     private UserBean targetUserBean;
 

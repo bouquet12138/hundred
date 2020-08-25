@@ -1,19 +1,15 @@
 package dy.network.hundred.dao;
 
 
+import dy.network.hundred.dao.provider.FlashProvider;
+import dy.network.hundred.dao.provider.UserDaoProvider;
+import dy.network.hundred.java_bean.PageBean;
 import dy.network.hundred.java_bean.db_bean.FlashBean;
 
 import java.util.List;
 import javax.websocket.server.PathParam;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 import org.springframework.stereotype.Repository;
 
@@ -37,4 +33,14 @@ public interface FlashDao {
 
     @Update({"update flash_tab set reading_volume = reading_volume + 1 where flash_id = #{flash_id}"})
     Integer addFlashReadingVolume(@PathParam("flash_id") int paramInt);
+
+    @Delete("delete from flash_content_tab where flash_id = #{flash_id}")
+    void deleteFlashContent(int flash_id);
+
+    @Delete("delete from flash_tab where flash_id = #{flash_id}")
+    void deleteFlash(int flash_id);
+
+    @SelectProvider(type = FlashProvider.class, method = "Initializes")
+    @ResultMap({"flashData"})
+    List<FlashBean> getFlashList(PageBean pageBean);
 }

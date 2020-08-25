@@ -5,13 +5,9 @@ import dy.network.hundred.utils.CollectionUtils;
 import dy.network.hundred.utils.TextUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.jdbc.SQL;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 @Slf4j
-@Component
-public class PayrollProvider {
+public class IntegralProvider {
 
     public String Initializes(PageBean pageBean) {
 
@@ -19,10 +15,10 @@ public class PayrollProvider {
         String sql = new SQL() {
             {
                 SELECT("*");
-                FROM("payroll_tab");
+                FROM("integral_tab");
 
                 if (!TextUtil.isEmpty(pageBean.getIntegral_type()))
-                    WHERE("type = #{integral_type}");
+                    WHERE("integral_type = #{integral_type}");
 
             }
         } + "";
@@ -41,12 +37,11 @@ public class PayrollProvider {
             sql += ")";
         }
 
-        sql += "  ORDER BY payroll_id  LIMIT " + ((pageBean.getPage() - 1) * pageBean.getLimit()) + "," + pageBean.getLimit();
+        sql += "  ORDER BY integral_id  LIMIT " + ((pageBean.getPage() - 1) * pageBean.getLimit()) + "," + pageBean.getLimit();
 
         log.info(sql);
 
         return sql;
     }
-
 
 }

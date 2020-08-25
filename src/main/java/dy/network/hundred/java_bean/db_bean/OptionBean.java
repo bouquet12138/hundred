@@ -6,9 +6,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class OptionBean {
+
     private Integer option_id;
     private Integer user_id;
-
+    private UserBean userBean;
 
     private String public_time;
     private String title;

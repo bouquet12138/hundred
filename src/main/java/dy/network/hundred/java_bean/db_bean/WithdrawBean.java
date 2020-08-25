@@ -8,10 +8,17 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class WithdrawBean {
+
+    public static final String HANDLE = "已处理";
+    public static final String UN_HANDLE = "未处理";
+
     private Integer withdraw_id;
     private long withdraw_amount;
     private String withdraw_time;
+
     private Integer user_id;
+    private UserBean userBean;
+
     private Integer integral_id;
     private String withdraw_remark;
     private String bank_card;
@@ -27,12 +34,12 @@ public class WithdrawBean {
 
     public WithdrawBean(int amount, Integer user_id, String withdraw_remark, String bank_card, String alipay, String wechat, long remain_record) {
         //amount, user_id), withdraw_remark, bank_card, alipay, wechat, userBean.getWithdraw_num() + amount
-        this.withdraw_amount=amount;
-        this.user_id=user_id;
-        this.withdraw_remark=withdraw_remark;
-        this.bank_card=bank_card;
-        this.alipay=alipay;
-        this.wechat=wechat;
+        this.withdraw_amount = amount;
+        this.user_id = user_id;
+        this.withdraw_remark = withdraw_remark;
+        this.bank_card = bank_card;
+        this.alipay = alipay;
+        this.wechat = wechat;
         this.remain_record = remain_record;
         this.withdraw_time = DateUtil.getDate();
     }

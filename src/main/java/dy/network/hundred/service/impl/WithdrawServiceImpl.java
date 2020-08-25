@@ -21,8 +21,8 @@ import static dy.network.hundred.java_bean.BaseBean.SUCCESS;
 
 @Slf4j
 @Service("withdrawService")
-public class WithdrawServiceImpl
-        implements WithdrawService {
+public class WithdrawServiceImpl implements WithdrawService {
+
     @Autowired
     private WithdrawDao withdrawDao;
     @Autowired
@@ -52,7 +52,7 @@ public class WithdrawServiceImpl
         }
 
         if (userBean.getPayroll_num() < 100L) {
-            baseBean.setMsg("满100才能提现");
+            baseBean.setMsg("工资满100才能提现");
             return baseBean;
         }
 
@@ -142,6 +142,40 @@ public class WithdrawServiceImpl
             baseBean.setMsg("用户不存在");
 
         }
+        return baseBean;
+    }
+
+    @Override
+    public BaseBean<List<WithdrawBean>> getWithBeanList(PageBean pageBean) {
+
+        BaseBean<List<WithdrawBean>> baseBean = new BaseBean();
+
+        boolean result = PageUtil.setPageBean(pageBean, userDao);
+        if (!result) {
+            baseBean.setMsg("没有数据");
+            return baseBean;
+        }
+
+        List<WithdrawBean> data = withdrawDao.getWithBeanList(pageBean);
+
+        baseBean.setCode(BaseBean.SUCCESS);
+        baseBean.setMsg("加载成功");
+        baseBean.setData(data);
+
+        return baseBean;
+
+    }
+
+    @Override
+    public BaseBean handleWithdraw(WithdrawBean withdrawBean) {
+
+        BaseBean baseBean = new BaseBean();
+        
+        withdrawDao.handleWithdraw(withdrawBean);
+
+        baseBean.setCode(BaseBean.SUCCESS);
+        baseBean.setMsg("设置成功");
+
         return baseBean;
     }
 }

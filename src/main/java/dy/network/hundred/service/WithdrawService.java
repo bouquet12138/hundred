@@ -2,6 +2,7 @@ package dy.network.hundred.service;
 
 
 
+import dy.network.hundred.java_bean.PageBean;
 import dy.network.hundred.java_bean.db_bean.WithdrawBean;
 import dy.network.hundred.java_bean.BaseBean;
 import java.util.List;
@@ -13,4 +14,8 @@ public interface WithdrawService {
   BaseBean<List<WithdrawBean>> findWithdrawDataByUid(@PathParam("user_id") Integer paramInteger);
   
   BaseBean<Integer> findUserWithdrawAmount(@PathParam("user_id") Integer paramInteger);
+
+  BaseBean<List<WithdrawBean>> getWithBeanList(PageBean pageBean);
+
+  BaseBean handleWithdraw(WithdrawBean withdrawBean);
 }

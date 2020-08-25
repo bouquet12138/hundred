@@ -46,7 +46,7 @@ public class DateUtil {
     public static boolean isInTime() {
         int hour = getHour();
 
-        if (hour >= 1 && hour < 12) {
+        if (hour >= 9 && hour < 21) {
             return true;
         }
         return false;

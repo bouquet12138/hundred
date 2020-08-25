@@ -5,12 +5,15 @@ import dy.network.hundred.dao.IntegralDao;
 import dy.network.hundred.dao.PayrollDao;
 import dy.network.hundred.dao.UserDao;
 import dy.network.hundred.java_bean.BaseBean;
+import dy.network.hundred.java_bean.PageBean;
+import dy.network.hundred.java_bean.db_bean.IntegralBean;
 import dy.network.hundred.java_bean.db_bean.PayrollBean;
 import dy.network.hundred.java_bean.db_bean.UserBean;
 import dy.network.hundred.service.PayrollService;
 import dy.network.hundred.task.SendPayroll;
 import dy.network.hundred.utils.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
@@ -186,6 +189,26 @@ public class PayrollServiceImpl
 
         baseBean.setCode(BaseBean.SUCCESS);
         baseBean.setMsg("工资发布成功");
+
+        return baseBean;
+    }
+
+    @Override
+    public BaseBean<List<PayrollBean>> getPayrollList(PageBean pageBean) {
+
+        BaseBean<List<PayrollBean>> baseBean = new BaseBean();
+
+        boolean result = PageUtil.setPageBean(pageBean, userDao);
+        if (!result) {
+            baseBean.setMsg("没有数据");
+            return baseBean;
+        }
+
+        List<PayrollBean> data = payrollDao.getPayrollList(pageBean);
+
+        baseBean.setCode(BaseBean.SUCCESS);
+        baseBean.setMsg("加载成功");
+        baseBean.setData(data);
 
         return baseBean;
     }

@@ -11,15 +11,14 @@ import dy.network.hundred.java_bean.db_bean.IntegralBean;
 import dy.network.hundred.java_bean.db_bean.PayrollBean;
 import dy.network.hundred.java_bean.db_bean.UserBean;
 import dy.network.hundred.service.IntegraService;
-import dy.network.hundred.utils.IntegerUtil;
-import dy.network.hundred.utils.MD5Utils;
-import dy.network.hundred.utils.PayrollUtil;
+import dy.network.hundred.utils.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -181,12 +180,34 @@ public class IntegralServiceImpl implements IntegraService {
 
         IntegerUtil.addIntegerRecord(IntegralBean.CONVERSION, integralBean.getTransaction_amount(), integralBean.getUser_id(),
                 null, integralBean
-                .getTransaction_remark(), userDao, integralDao);
+                        .getTransaction_remark(), userDao, integralDao);
 
         baseBean.setCode(BaseBean.SUCCESS);//充值成功
         baseBean.setMsg("充值成功");
 
         return baseBean;
+    }
+
+    @Override
+    public BaseBean<List<IntegralBean>> getIntegralList(PageBean pageBean) {
+
+
+        BaseBean<List<IntegralBean>> baseBean = new BaseBean();
+
+        boolean result = PageUtil.setPageBean(pageBean, userDao);
+        if (!result) {
+            baseBean.setMsg("没有数据");
+            return baseBean;
+        }
+
+        List<IntegralBean> integralBeans = integralDao.getIntegralList(pageBean);
+
+        baseBean.setCode(BaseBean.SUCCESS);
+        baseBean.setMsg("信息获取成功");
+        baseBean.setData(integralBeans);
+
+        return baseBean;
+
     }
 
 }
